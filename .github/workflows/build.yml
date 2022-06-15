@@ -3,22 +3,56 @@ name: Build
 on: push
 
 jobs:
-  build:
-    name: Build
-    strategy:
-      matrix:
-        nix_version:
-          - 2.9.0
-          - 2.8.1
-          - 2.7.0
-          - 2.6.1
-          - 2.6.0
-          - 2.5.1
-          - 2.4
+  build_2_9:
     uses: nixbuild/nixbuild-action/.github/workflows/ci-workflow.yml@nix_version_opt
     secrets:
       nixbuild_ssh_key: ${{ secrets.NIXBUILD_SSH_KEY }}
     with:
       filter_builds: '.system == "x86_64-linux"'
       label_builds: '"\(.attr)"'
-      nix_version: ${{ matrix.nix_version }}
+      nix_version: 2.9.0
+
+  build_2_8:
+    uses: nixbuild/nixbuild-action/.github/workflows/ci-workflow.yml@nix_version_opt
+    secrets:
+      nixbuild_ssh_key: ${{ secrets.NIXBUILD_SSH_KEY }}
+    with:
+      filter_builds: '.system == "x86_64-linux"'
+      label_builds: '"\(.attr)"'
+      nix_version: 2.8.1
+
+  build_2_7:
+    uses: nixbuild/nixbuild-action/.github/workflows/ci-workflow.yml@nix_version_opt
+    secrets:
+      nixbuild_ssh_key: ${{ secrets.NIXBUILD_SSH_KEY }}
+    with:
+      filter_builds: '.system == "x86_64-linux"'
+      label_builds: '"\(.attr)"'
+      nix_version: 2.7.0
+
+  build_2_6:
+    uses: nixbuild/nixbuild-action/.github/workflows/ci-workflow.yml@nix_version_opt
+    secrets:
+      nixbuild_ssh_key: ${{ secrets.NIXBUILD_SSH_KEY }}
+    with:
+      filter_builds: '.system == "x86_64-linux"'
+      label_builds: '"\(.attr)"'
+      nix_version: 2.6.0
+
+  build_2_5:
+    uses: nixbuild/nixbuild-action/.github/workflows/ci-workflow.yml@nix_version_opt
+    secrets:
+      nixbuild_ssh_key: ${{ secrets.NIXBUILD_SSH_KEY }}
+    with:
+      filter_builds: '.system == "x86_64-linux"'
+      label_builds: '"\(.attr)"'
+      nix_version: 2.5.1
+
+  build_2_4:
+    uses: nixbuild/nixbuild-action/.github/workflows/ci-workflow.yml@nix_version_opt
+    secrets:
+      nixbuild_ssh_key: ${{ secrets.NIXBUILD_SSH_KEY }}
+    with:
+      filter_builds: '.system == "x86_64-linux"'
+      label_builds: '"\(.attr)"'
+      nix_version: 2.4
