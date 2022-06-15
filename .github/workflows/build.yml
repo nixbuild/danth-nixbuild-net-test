@@ -5,7 +5,7 @@ on: push
 jobs:
   build:
     name: Build
-    uses: nixbuild/nixbuild-action/.github/workflows/ci-workflow.yml@v11
+    uses: nixbuild/nixbuild-action/.github/workflows/ci-workflow.yml@nix_version_opt
     secrets:
       nixbuild_ssh_key: ${{ secrets.NIXBUILD_SSH_KEY }}
     with:
