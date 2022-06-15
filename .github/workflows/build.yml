@@ -5,9 +5,20 @@ on: push
 jobs:
   build:
     name: Build
+    strategy:
+      matrix:
+        nix_version:
+          - 2.9.0
+          - 2.8.1
+          - 2.7.0
+          - 2.6.1
+          - 2.6.0
+          - 2.5.1
+          - 2.4
     uses: nixbuild/nixbuild-action/.github/workflows/ci-workflow.yml@nix_version_opt
     secrets:
       nixbuild_ssh_key: ${{ secrets.NIXBUILD_SSH_KEY }}
     with:
       filter_builds: '.system == "x86_64-linux"'
       label_builds: '"\(.attr)"'
+      nix_version: ${{ matrix.nix_version }}
